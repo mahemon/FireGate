@@ -1,0 +1,27 @@
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.6pt}
+\caption{Benchmarks written by others, every setting frozen: HarmBench (HB, 200 behaviours), its contextual
+behaviours (HB ctx., 100, a passage then a request) and StrongREJECT (SR, 288). Firing (\%), before training, of the
+gate chosen by the steps of \cref{sec:method}, with its 95\% Clopper--Pearson bound, and of the deployed gate.
+Refusal: change of Seq-GRPO's refusal rate (points, seed 0), ungated and behind the chosen gate.}
+\label{tab:external}
+\begin{tabular}{l l rrr rr rrr rrr}
+\toprule
+ & & \multicolumn{3}{c}{chosen gate fires (\%)} & \multicolumn{2}{c}{deployed fires (\%)} & \multicolumn{3}{c}{refusal, ungated} & \multicolumn{3}{c}{refusal, behind chosen} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-7}\cmidrule(lr){8-10}\cmidrule(lr){11-13}
+Experiment & Chosen gate & HB & HB ctx. & SR & HB ctx. & SR & HB & HB ctx. & SR & HB & HB ctx. & SR \\
+\midrule
+Concise, Qwen2.5-1.5B & protect + passages & 0.0 [1.5] & 9.0 [15.2] & 4.2 [6.7] & 38.0 & 7.6 & $-$79.0 & $-$30.0 & $-$86.8 & +0.0 & $-$2.0 & $-$3.5 \\
+Concise-ctx, Qwen2.5-1.5B & protect + passages & 0.0 [1.5] & 1.0 [4.7] & 0.0 [1.0] & 38.0 & 0.0 & $-$51.0 & $-$27.0 & $-$50.3 & +0.0 & +0.0 & +0.0 \\
+SQuAD~2.0, Qwen2.5-1.5B & protect + passages & 0.0 [1.5] & 0.0 [3.0] & 0.0 [1.0] & 0.0 & 0.0 & $-$1.5 & +4.0 & $-$19.1 & +0.0 & +0.0 & +0.0 \\
+NQ, Qwen2.5-1.5B & two-sided & 0.0 [1.5] & 0.0 [3.0] & 0.0 [1.0] & 0.0 & 0.0 & $-$41.0 & $-$20.0 & $-$28.1 & +0.0 & +0.0 & +0.0 \\
+IF, Qwen2.5-1.5B & two-sided + remedy & 0.0 [1.5] & 0.0 [3.0] & 0.0 [1.0] & 92.0 & 1.4 & $-$3.5 & +5.0 & $-$0.7 & +0.0 & +0.0 & +0.0 \\
+IF, Qwen2.5-7B & two-sided + remedy & 0.0 [1.5] & 0.0 [3.0] & 0.0 [1.0] & 98.0 & 1.4 & +3.0 & +1.0 & +2.8 & +0.0 & +0.0 & +0.0 \\
+3 tasks, Qwen2.5-1.5B & two-sided + remedy & 0.0 [1.5] & 0.0 [3.0] & 0.0 [1.0] & 20.0 & 2.8 & $-$11.5 & $-$10.0 & $-$6.9 & +0.0 & +0.0 & +0.0 \\
+NQ, OLMo-2-7B & two-sided & 0.0 [1.5] & 0.0 [3.0] & 0.0 [1.0] & 0.0 & 0.0 & $-$2.0 & $-$9.0 & $-$0.3 & +0.0 & +0.0 & +0.0 \\
+NQ, Llama-3.2-3B & two-sided & 0.0 [1.5] & 0.0 [3.0] & 0.0 [1.0] & 0.0 & 0.0 & $-$25.0 & $-$21.0 & $-$14.2 & +0.0 & +0.0 & +0.0 \\
+\bottomrule
+\end{tabular}
+\end{table*}

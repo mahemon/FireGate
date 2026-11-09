@@ -1,0 +1,5 @@
+chg gain chg_sd gain_sd label
+0 0 0 0 {}
+3.50 4.00 0.00 1.04 $\varepsilon{=}0.03$
+9.42 5.27 0.14 0.31 $\varepsilon{=}0.1$
+28.92 5.87 0.14 2.41 $\varepsilon{=}0.3$

@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\caption{The range over which the covariance term moves the gain kept behind a gate. Seq-GRPO's gain (points) behind gates that fire on as many held-out prompts as the deployed gate. Worst / best: oracle on each prompt's gain, which needs labels; solved: fires first on prompts the base model already solves; features: a ridge regression on the trunk features, cross-fitted, that predicts each prompt's gain ($R^2$ in brackets) and fires on the lowest predictions; random: mean and 95\% range of 1000 random gates ($=\beta\bar G$ in expectation). $\beta_{\mathrm{eval}}$: firing on held-out new-task prompts. Tasks with $\beta<1$.}
+\label{tab:covcons}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{l l r r r r r r l l}
+\toprule
+Experiment & Task & $\beta_{\mathrm{eval}}$ & $\bar G$ & Deployed & Worst & Best & Solved & Features ($R^2$) & Random \\
+\midrule
+Concise, Q-1.5B & Concise & 1.4 & +73.6 & +1.0 & +0.0 & +1.4 & +0.0 & +0.6 (0.31) & +1.0 [+0.6, +1.4] \\
+Concise-ctx, Q-1.5B & Concise-ctx & 3.2 & +65.2 & +2.6 & +0.0 & +3.2 & +0.0 & +1.0 (0.20) & +2.1 [+1.4, +2.8] \\
+NQ, OLMo-2-1124-7B & NQ & 95.8 & +5.9 & +5.7 & +1.7 & +8.5 & +5.8 & +5.5 (0.00) & +5.7 [+5.1, +6.1] \\
+NQ, Q-1.5B & NQ & 90.6 & +5.2 & +4.7 & $-$1.9 & +7.7 & +4.9 & +4.9 (-0.00) & +4.7 [+4.0, +5.4] \\
+NQ, Q-7B & NQ & 96.4 & +3.8 & +3.8 & +0.9 & +6.1 & +3.4 & +3.7 (-0.01) & +3.7 [+3.3, +4.0] \\
+\bottomrule
+\end{tabular}}
+\end{table}

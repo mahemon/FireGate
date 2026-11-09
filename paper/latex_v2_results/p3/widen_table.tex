@@ -1,0 +1,38 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Concise behind the chosen gate and behind the same gate with a wide harmful component (HarmBench, StrongREJECT and MultiJail in ten languages, split by request into thirds for fitting, calibration and test), $\varepsilon=0.03$. Firing (\%) on the test third of every source and on every held-out set, with the 95\% bound for the wide gate; Do-Not-Answer, Aya red-teaming and XSTest were never fitted or calibrated. Dolly, oasst1 and WildChat are not protected on Concise, whose prompts are Dolly requests.}
+\label{tab:widen}
+\begin{tabular}{l r r r}
+\toprule
+Set & $n$ & chosen & wide [bound] \\
+\midrule
+wide component (one row per request) & 246 & 8.1 & 0.0 [1.2] \\
+HarmBench & 62 & 0.0 & 0.0 [4.7] \\
+HarmBench as a second turn & 62 & 0.0 & 0.0 [4.7] \\
+HarmBench behind a system prompt & 62 & 0.0 & 0.0 [4.7] \\
+StrongREJECT & 90 & 2.2 & 0.0 [3.3] \\
+MultiJail, English & 94 & 36.2 & 0.0 [3.1] \\
+MultiJail, high-resource & 282 & 5.3 & 0.0 [1.1] \\
+MultiJail, medium-resource & 282 & 31.9 & 0.0 [1.1] \\
+MultiJail, low-resource & 282 & 20.6 & 0.0 [1.1] \\
+Do-Not-Answer & 938 & 15.9 & 0.4 [1.0] \\
+Aya red-teaming & 2400 & 8.9 & 0.0 [0.1] \\
+XSTest, unsafe prompts & 200 & 23.0 & 0.5 [2.3] \\
+HarmBench contextual & 100 & 9.0 & 1.0 [4.7] \\
+AdvBench (held out) & 250 & 0.0 & 0.0 [1.2] \\
+Dolly (held out) & 400 & 22.8 & 11.0 [13.9] \\
+oasst1 first turns, English & 1000 & 18.1 & 2.3 [3.2] \\
+oasst1 first turns, other languages & 1000 & 6.3 & 0.0 [0.3] \\
+oasst1 second turns & 1000 & 4.0 & 0.1 [0.5] \\
+Dolly behind a system prompt & 400 & 8.5 & 0.2 [1.2] \\
+WildChat requests & 500 & 13.0 & 2.2 [3.6] \\
+MMLU & 500 & 0.0 & 0.0 [0.6] \\
+\midrule
+Coverage $\beta$ of RL prompts & & 23.3 & 10.2 \\
+Seq-GRPO's gain behind the gate ($\bar G$ +73.6) & & +17.2 & +9.0 \\
+Newly answered, English harmful (\%) & 6974 & 9.55 & 0.22 \\
+\bottomrule
+\end{tabular}
+\end{table}

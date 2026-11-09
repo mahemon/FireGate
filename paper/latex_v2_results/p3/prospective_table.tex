@@ -1,0 +1,32 @@
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.4pt}
+\caption{The frozen gates on prompt sets written by others, measured once: firing (\%) of the gate chosen for each experiment ($\ast$) and of the deployed gate, with the 95\% Clopper--Pearson bound in brackets for the chosen gate. MJ: MultiJail harmful requests in English and in its high-, medium- and low-resource languages; HB turn 2, HB sys.: HarmBench requests after an oasst1 exchange or behind a system prompt from awesome-chatgpt-prompts; OA: oasst1 user turns in English, in other languages and as second turns; Dolly sys.: held-out Dolly requests behind such a system prompt. Firing bounds how often any model behind the gate answers differently.}
+\label{tab:prospective}
+\begin{tabular}{l l rrrrrrrrrr}
+\toprule
+ & & \multicolumn{6}{c}{harmful} & \multicolumn{4}{c}{benign} \\
+Experiment & Gate & MJ en & MJ hi & MJ mid & MJ lo & HB turn 2 & HB sys. & OA en & OA other & OA turn 2 & Dolly sys. \\
+\midrule
+Concise, Qwen2.5-1.5B & protect + passages$^\ast$ & 31.1 [35.7] & 6.7 [8.2] & 32.2 [34.8] & 20.3 [22.6] & 0.0 [1.5] & 0.0 [1.5] & 18.1 [20.2] & 6.3 [7.7] & 4.0 [5.2] & 8.5 [11.2] \\
+ & deployed & 1.6 & 1.4 & 0.2 & 1.3 & 32.0 & 15.5 & 5.1 & 1.2 & 67.5 & 38.8 \\
+Concise-ctx, Qwen2.5-1.5B & protect + passages$^\ast$ & 0.0 [0.9] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [1.5] & 0.0 [1.5] & 0.0 [0.3] & 0.1 [0.5] & 0.0 [0.3] & 0.0 [0.7] \\
+ & deployed & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.1 & 0.3 & 0.1 & 9.2 \\
+SQuAD~2.0, Qwen2.5-1.5B & protect + passages$^\ast$ & 0.0 [0.9] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [1.5] & 0.0 [1.5] & 0.1 [0.5] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.7] \\
+ & deployed & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.4 & 0.0 \\
+NQ, Qwen2.5-1.5B & two-sided$^\ast$ & 1.6 [3.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [1.5] & 0.0 [1.5] & 0.9 [1.6] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.7] \\
+ & deployed & 1.9 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 1.5 & 0.4 & 0.0 & 0.0 \\
+IF, Qwen2.5-1.5B & two-sided + remedy$^\ast$ & 0.0 [0.9] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [1.5] & 0.0 [1.5] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.7] \\
+ & deployed & 0.0 & 0.2 & 0.3 & 0.0 & 8.0 & 52.0 & 5.2 & 2.1 & 45.5 & 60.5 \\
+IF, Qwen2.5-7B & two-sided + remedy$^\ast$ & 0.0 [0.9] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [1.5] & 0.0 [1.5] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.7] \\
+ & deployed & 0.0 & 0.0 & 0.1 & 0.1 & 1.5 & 2.5 & 4.9 & 1.5 & 28.1 & 5.8 \\
+3-task stream, Qwen2.5-1.5B & two-sided + remedy$^\ast$ & 0.0 [0.9] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [1.5] & 0.0 [1.5] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.7] \\
+ & deployed & 1.0 & 0.2 & 0.0 & 0.7 & 0.0 & 5.0 & 9.4 & 1.2 & 1.3 & 14.2 \\
+NQ, OLMo-2-7B & two-sided$^\ast$ & 1.6 [3.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [1.5] & 0.0 [1.5] & 1.0 [1.7] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.7] \\
+ & deployed & 1.9 & 0.1 & 0.0 & 0.3 & 0.0 & 0.0 & 1.0 & 0.0 & 0.0 & 0.0 \\
+NQ, Llama-3.2-3B & two-sided$^\ast$ & 0.6 [2.0] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [1.5] & 0.0 [1.5] & 0.8 [1.4] & 0.0 [0.3] & 0.0 [0.3] & 0.0 [0.7] \\
+ & deployed & 1.3 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.9 & 0.0 & 0.0 & 0.2 \\
+\bottomrule
+\end{tabular}
+\end{table*}

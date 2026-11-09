@@ -1,0 +1,61 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{2.5pt}
+\caption{Firing of gate variants on held-out prompts (\%, $\varepsilon=0.03$), computed from unlabeled prompts before any training; it bounds the drift of every model behind the gate. Deployed: the deployed prompt-time gate; + region: the two-sided gate; one budget: the union of a stream's gates calibrated at $\varepsilon$; + harmful in format: AdvBench requests in the tasks' formats added to the reference; protect: calibrated on AdvBench and task-like prompts only. Power: firing on unlabeled new-task prompts; CP: 95\% Clopper--Pearson bound on Dolly; Wrap: AdvBench requests in a trained task's format; Sys: Dolly requests behind a system prompt; JB: AdvBench requests in jailbreak templates (mean of three). XSTest, MMLU and JB are never used in calibration.}
+\label{tab:gate_overview}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{l l r rr r r r r r}
+\toprule
+Experiment & Gate & Power$\uparrow$ & Dolly$\downarrow$ & CP$\downarrow$ & XSTest & MMLU & Wrap & Sys & JB \\
+\midrule
+NQ, 1.5B & deployed & 92.2 & 3.2 & 5.1 & 2.0 & 0.0 & -- & 0.0 & 0.0 \\
+ & + region & 90.7 & 2.8 & 4.5 & 2.0 & 0.0 & -- & 0.0 & 0.0 \\
+\midrule
+NQ, 7B & deployed & 97.9 & 2.8 & 4.5 & 1.6 & 0.0 & -- & 0.0 & 0.0 \\
+ & + region & 96.1 & 2.0 & 3.6 & 1.6 & 0.0 & -- & 0.0 & 0.0 \\
+\midrule
+NQ, OLMo-2 & deployed & 96.8 & 2.2 & 3.9 & 2.4 & 0.0 & -- & 0.0 & 0.0 \\
+ & + region & 95.0 & 2.2 & 3.9 & 2.4 & 0.0 & -- & 0.0 & 0.0 \\
+\midrule
+IF, 1.5B & deployed & 100.0 & 1.5 & 2.9 & 0.0 & 99.4 & 100.0 & 73.5 & 34.0 \\
+ & + region & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 94.0 & 0.0 & 0.0 \\
+ & + harmful in format & 98.4 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+ & + region, + harmful in format & 96.5 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+\midrule
+IF, 7B & deployed & 100.0 & 1.8 & 3.3 & 0.0 & 100.0 & 100.0 & 10.8 & 49.7 \\
+ & + region & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 99.6 & 0.0 & 0.0 \\
+ & + harmful in format & 99.5 & 0.0 & 0.7 & 0.0 & 19.6 & 0.0 & 0.0 & 0.0 \\
+ & + region, + harmful in format & 97.6 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+\midrule
+Concise, 1.5B & deployed & 0.7 & 0.8 & 1.9 & 0.0 & 2.0 & -- & 0.8 & 0.0 \\
+ & + region & 0.8 & 0.5 & 1.6 & 0.0 & 0.0 & -- & 0.0 & 0.0 \\
+ & protect safety, task-like & 95.1 & 93.5 & 95.4 & 97.6 & 0.0 & -- & 33.5 & 0.0 \\
+\midrule
+Concise ctx, 1.5B & deployed & 3.8 & 1.8 & 3.3 & 0.0 & 0.0 & -- & 0.0 & 0.0 \\
+ & + region & 3.7 & 1.5 & 2.9 & 0.0 & 0.0 & -- & 0.0 & 0.0 \\
+ & protect safety, task-like & 100.0 & 39.8 & 43.9 & 0.4 & 0.4 & -- & 33.2 & 0.1 \\
+\midrule
+3 tasks, 1.5B & deployed & 100.0 & 4.0 & 6.0 & 0.0 & 8.6 & 100.0 & 1.0 & 13.2 \\
+ & + region & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+ & one budget & 100.0 & 2.0 & 3.6 & 0.0 & 7.2 & 100.0 & 0.2 & 2.3 \\
+ & + region, one budget & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+ & + harmful in format & 100.0 & 0.2 & 1.2 & 0.0 & 0.4 & 4.4 & 0.0 & 0.0 \\
+ & + region, + harmful in format & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+\midrule
+3 tasks, 7B & deployed & 100.0 & 3.0 & 4.8 & 0.0 & 39.0 & 100.0 & 3.0 & 57.5 \\
+ & + region & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+ & one budget & 100.0 & 1.8 & 3.3 & 0.0 & 33.6 & 100.0 & 2.0 & 42.5 \\
+ & + region, one budget & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+ & + harmful in format & 100.0 & 2.0 & 3.6 & 0.0 & 11.0 & 1.7 & 0.0 & 24.5 \\
+ & + region, + harmful in format & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+\midrule
+5 tasks, 1.5B & deployed & 100.0 & 6.0 & 8.3 & 0.0 & 50.0 & 100.0 & 2.2 & 13.2 \\
+ & + region & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+ & one budget & 100.0 & 2.0 & 3.6 & 0.0 & 28.6 & 99.6 & 0.5 & 1.3 \\
+ & + region, one budget & 98.0 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+ & + harmful in format & 100.0 & 2.5 & 4.2 & 0.0 & 79.6 & 4.4 & 1.0 & 0.0 \\
+ & + region, + harmful in format & 98.1 & 0.0 & 0.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+\bottomrule
+\end{tabular}}
+\end{table}

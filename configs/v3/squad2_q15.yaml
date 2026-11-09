@@ -1,0 +1,65 @@
+# Paper v3 (PLAN_PAPER3.md): a new task that overlaps the reference naturally. SQuAD 2.0 questions about a passage,
+# in the layout of a Dolly request with a context passage; the reward pays for the gold answer on answerable questions
+# and for saying that the passage does not give the answer on unanswerable ones (twcore/squad2.py). The new prompts
+# look like the closed-QA and information-extraction part of the Dolly reference and like the BoolQ prompts among
+# the task-like reference prompts. Qwen2.5-1.5B-Instruct, the settings of the ladder tasks; three seeds.
+# Data: python scripts/prepare_data.py --data data --only-squad2 (login node).
+# Methods (slurm/plans/p3.sh): Seq-GRPO, Tripwire-prompt (every reference component, as in the paper), Tripwire-prompt
+# trained under a tripwire that protects only harmful requests and task-like prompts (tag protect,
+# tripwire.protect=[advbench,general]), Ref-KL on those protected components (tag protect), and safety replay (safemix).
+exp: v3_squad2_q15
+seed_dirs: true
+model_path: models/Qwen2.5-1.5B-Instruct
+data_dir: data
+out_dir: runs
+dtype: bfloat16
+seed: 0
+stream: [squad2]
+
+gate_layer: 8
+lora:
+  r: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+gen:
+  max_new_tokens: 512
+  max_prompt_tokens: 1024
+  eval_batch_size: 128
+  rollout_batch_size: 128
+  feature_batch_size: 32
+
+grpo:
+  steps: 150
+  prompts_per_step: 16
+  group_size: 8
+  lr: 5.0e-5
+  warmup_steps: 10
+  grad_clip: 1.0
+  micro_batch: 8
+  temperature: 1.0
+  ckpt_every: 25
+  kl_beta: 0.01
+  replay_frac: 0.25
+  weight_decay: 0.0
+  refkl_beta: 1.0
+  refkl_batch: 32
+  refkl_max_prompts: 1024
+  olora_lambda: 0.5
+
+tripwire:
+  eps: 0.03
+  delta: 0.05
+  positions_per_traj: 48
+  l2: 1.0e-4
+  lbfgs_iters: 200
+  fit_ref: {dolly: 600, advbench: 100, general: 900}
+  cal_ref: {dolly: 700, advbench: 170, general: 700}
+
+pools: {squad2: 500, mmlu: 500, advbench: 250, xstest: 450, dolly: 400}
+
+splits:
+  rl: [0, 2400]
+  fit_new: [2400, 3000]
+  fit_old: [3000, 3300]   # not used (a single task never becomes an earlier task)
+  cal_old: [3300, 3600]

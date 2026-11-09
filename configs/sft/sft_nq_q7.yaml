@@ -1,0 +1,64 @@
+# PLAN_SFT.md, optional: the NQ gold-answer SFT of sft_nq_q15.yaml at Qwen2.5-7B, full-rank updates of blocks 8-27
+# (4.7B parameters). Needs an H200 (about 100 GB on the GPU: weights, float32 update, gradient and Adam moments) and
+# 128 GB of CPU memory to resume (the checkpoint is about 56 GB); slurm/plans/sft.sh asks for both. Everything else as
+# configs/v2/overlap_q7.yaml (its LoRA runs are the comparison).
+exp: sft_nq_q7
+seed_dirs: true
+model_path: models/Qwen2.5-7B-Instruct
+data_dir: data
+out_dir: runs
+dtype: bfloat16
+seed: 0
+stream: [nq]
+
+gate_layer: 8
+lora:
+  r: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+  dense: true          # full-rank update of every target projection of blocks >= gate_layer (no LoRA; r, alpha unused)
+
+gen:
+  max_new_tokens: 512
+  max_prompt_tokens: 1024
+  eval_batch_size: 64
+  rollout_batch_size: 64
+  feature_batch_size: 16
+
+grpo:
+  steps: 150
+  prompts_per_step: 16
+  group_size: 8
+  lr: 5.0e-6
+  warmup_steps: 10
+  grad_clip: 1.0
+  micro_batch: 8           # SFT sequences are short here (question + gold answer)
+  temperature: 1.0
+  ckpt_every: 50            # each checkpoint is about 56 GB (update, Adam moments)
+  kl_beta: 0.01
+  replay_frac: 0.25
+  weight_decay: 0.0
+  refkl_beta: 1.0
+  refkl_batch: 32
+  refkl_max_prompts: 1024
+  olora_lambda: 0.5
+  objective: sft
+  sft_source: gold
+
+tripwire:
+  eps: 0.03
+  delta: 0.05
+  positions_per_traj: 48
+  l2: 1.0e-4
+  lbfgs_iters: 200
+  fit_ref: {dolly: 600, advbench: 100, general: 900}
+  cal_ref: {dolly: 700, advbench: 170, general: 700}
+
+# no stream-task pools other than nq; the reference / held-out pools are the same as the main experiment
+pools: {nq: 500, mmlu: 500, advbench: 250, xstest: 450, dolly: 400}
+
+splits:
+  rl: [0, 2400]
+  fit_new: [2400, 3000]
+  fit_old: [3000, 3300]
+  cal_old: [3300, 3600]

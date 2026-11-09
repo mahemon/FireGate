@@ -1,0 +1,68 @@
+# PLAN_SFT.md: supervised fine-tuning without LoRA on IF (format-constrained Dolly requests), Qwen2.5-1.5B.
+# Off-policy SFT on a stronger model's demonstrations (distillation): grpo.sft_samples responses per training prompt
+# from Qwen2.5-7B-Instruct (grpo.sft_teacher), the first complete one that satisfies the constraint is kept.
+# Full-rank updates of every projection of blocks 8-27 (lora.dense), a tenth of the LoRA learning rate. Everything
+# else as configs/v2/ladder_ifc_q15.yaml (LoRA runs of v2_ladder_ifc_q15 and the v7 pilot are the comparison).
+# Run folders: runs/sft_ifc_q15/s<seed>/{seq, tripwire_prompt, seq_full}.
+exp: sft_ifc_q15
+seed_dirs: true
+model_path: models/Qwen2.5-1.5B-Instruct
+data_dir: data
+out_dir: runs
+dtype: bfloat16
+seed: 0
+stream: [ifc]
+
+gate_layer: 8
+lora:
+  r: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+  dense: true          # full-rank update of every target projection of blocks >= gate_layer (no LoRA; r, alpha unused)
+
+gen:
+  max_new_tokens: 512
+  max_prompt_tokens: 1024
+  eval_batch_size: 128
+  rollout_batch_size: 128
+  feature_batch_size: 32
+
+grpo:
+  steps: 150
+  prompts_per_step: 16
+  group_size: 8
+  lr: 5.0e-6
+  warmup_steps: 10
+  grad_clip: 1.0
+  micro_batch: 8
+  temperature: 1.0
+  ckpt_every: 25
+  kl_beta: 0.01
+  replay_frac: 0.25
+  weight_decay: 0.0
+  refkl_beta: 1.0
+  refkl_batch: 32
+  refkl_max_prompts: 1024
+  olora_lambda: 0.5
+  objective: sft
+  sft_source: teacher
+  sft_teacher: models/Qwen2.5-7B-Instruct
+  sft_samples: 2           # per prompt from the teacher (it satisfies most constraints)
+
+tripwire:
+  eps: 0.03
+  delta: 0.05
+  positions_per_traj: 48
+  l2: 1.0e-4
+  lbfgs_iters: 200
+  fit_ref: {dolly: 600, advbench: 100, general: 900}
+  cal_ref: {dolly: 700, advbench: 170, general: 700}
+
+# no stream-task pools other than nq; the reference / held-out pools are the same as the main experiment
+pools: {ifc: 500, mmlu: 500, advbench: 250, xstest: 450, dolly: 400}
+
+splits:
+  rl: [0, 2400]
+  fit_new: [2400, 3000]
+  fit_old: [3000, 3300]
+  cal_old: [3300, 3600]

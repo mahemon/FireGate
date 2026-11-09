@@ -1,0 +1,35 @@
+\begin{table}[h]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\caption{Drift under other decoding rules (Qwen2.5-1.5B, seed 0; the final and the base model share one decoding seed and are decoded in the same batches). Fire: firing on held-out Dolly prompts under that rule and its 95\% Clopper--Pearson bound, which bounds the TV distance on Dolly under that rule (\cref{thm:coupling}); a prompt-time gate's firing is the same under every rule, an anytime gate's is not. Chg.: share of changed responses, an estimate of an upper bound on the TV distance (coupling inequality). $\Delta$: change of refusal (AdvBench) and accuracy (MMLU), points. TV$\ge$: largest 95\% lower confidence bound on the TV distance over the four pools (Dolly, AdvBench, XSTest, MMLU), from the Kolmogorov--Smirnov distance of response lengths; for ungated runs it, not Chg., is the evidence of drift. Non-fired: changed responses on prompts where no gate fired, over the four pools (\cref{thm:coupling}: 0).}
+\label{tab:decode}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{l l r r r r r r r r}
+\toprule
+ & & \multicolumn{2}{c}{Dolly (\%)} & \multicolumn{2}{c}{AdvBench} & \multicolumn{2}{c}{MMLU} & & \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Run & Decoding & Fire (CP) & Chg. & Chg. & $\Delta$ & Chg. & $\Delta$ & TV$\ge$ & Non-fired \\
+\midrule
+Stream, \methodp{} & $T=0.3$ & 3.8 (5.7) & 2.5 & 0.0 & +0.0 & 3.0 & $-$0.4 & 0.0 & 0 \\
+Stream, \methodp{} & $T=1$ & 3.8 (5.7) & 3.0 & 0.0 & +0.0 & 2.4 & +0.2 & 0.0 & 0 \\
+Stream, \methodp{} & $T=1$, top-$p$ 0.9 & 3.8 (5.7) & 2.5 & 0.0 & +0.0 & 2.6 & $-$0.8 & 0.0 & 0 \\
+\addlinespace
+Stream, \methoda{} & $T=0.3$ & 1.2 (2.6) & 0.8 & 0.0 & +0.0 & 6.0 & +0.8 & 0.0 & 0 \\
+Stream, \methoda{} & $T=1$ & 2.0 (3.6) & 1.5 & 0.0 & +0.0 & 6.8 & +0.4 & 0.0 & 0 \\
+Stream, \methoda{} & $T=1$, top-$p$ 0.9 & 0.8 (1.9) & 0.5 & 0.0 & +0.0 & 6.2 & +0.6 & 0.0 & 0 \\
+\addlinespace
+Stream, Seq-GRPO & $T=0.3$ & -- & 88.2 & 9.6 & $-$0.8 & 27.6 & +1.8 & 0.0 & -- \\
+Stream, Seq-GRPO & $T=1$ & -- & 95.8 & 49.6 & $-$0.4 & 35.0 & $-$0.2 & 3.8 & -- \\
+Stream, Seq-GRPO & $T=1$, top-$p$ 0.9 & -- & 93.8 & 32.0 & +0.0 & 33.2 & +0.8 & 3.8 & -- \\
+\addlinespace
+NQ, \methodp{} & $T=0.3$ & 3.5 (5.4) & 3.5 & 0.0 & +0.0 & 0.0 & +0.0 & 0.0 & 0 \\
+NQ, \methodp{} & $T=1$ & 3.5 (5.4) & 3.5 & 0.0 & +0.0 & 0.0 & +0.0 & 0.0 & 0 \\
+NQ, \methodp{} & $T=1$, top-$p$ 0.9 & 3.5 (5.4) & 3.5 & 0.0 & +0.0 & 0.0 & +0.0 & 0.0 & 0 \\
+\addlinespace
+NQ, Seq-GRPO & $T=0.3$ & -- & 92.8 & 74.8 & $-$6.4 & 38.4 & $-$0.2 & 51.7 & -- \\
+NQ, Seq-GRPO & $T=1$ & -- & 97.5 & 92.4 & $-$8.8 & 45.0 & +1.2 & 38.5 & -- \\
+NQ, Seq-GRPO & $T=1$, top-$p$ 0.9 & -- & 96.8 & 88.4 & $-$7.2 & 47.0 & $-$0.4 & 51.7 & -- \\
+\bottomrule
+\end{tabular}}
+\end{table}

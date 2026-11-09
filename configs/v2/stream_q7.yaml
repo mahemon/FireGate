@@ -1,0 +1,67 @@
+# v2 scale experiment: Qwen2.5-7B-Instruct (28 blocks, as the 1.5B model, so the same gate layer 8).
+# Batches reduced for an A100 80GB; on H200 the eval/rollout batches can go back to 128 (changes the settings key,
+# so decide before the first run). Multi-GPU: NGPU=4 bash slurm/submit.sh stream.
+# v2 main experiment, Qwen2.5-1.5B-Instruct: GSM8K -> Countdown -> Knights & Knaves, three seeds
+# (bash slurm/week1.sh). Runs live in runs/v2_stream_q15/s<seed>/<method>[_<tag>].
+# Same data, training and tripwire settings as stream_qwen15_v2 (the version-1 paper run); new: seed folders,
+# per-batch sampling seeds, refkl / olora / trained router / prompt-time tripwire, multi-GPU support.
+exp: v2_stream_q7
+seed_dirs: true
+model_path: models/Qwen2.5-7B-Instruct
+data_dir: data
+out_dir: runs
+dtype: bfloat16
+seed: 0
+stream: [gsm8k, countdown, kk]
+
+# blocks 0..7 = frozen trunk; tripwires read the input of block 8; adapters in blocks 8..27
+gate_layer: 8
+lora:
+  r: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+gen:
+  max_new_tokens: 512
+  max_prompt_tokens: 1024
+  eval_batch_size: 64        # fixed for all stages (bit-identical outputs need the same batches)
+  rollout_batch_size: 64
+  feature_batch_size: 16
+
+grpo:
+  steps: 150                  # per task; 16 prompts x 8 samples per step
+  prompts_per_step: 16
+  group_size: 8
+  lr: 5.0e-5                  # LoRA scale alpha/r = 2; roughly the TRL "LoRA without regret" GRPO setting
+  warmup_steps: 10
+  grad_clip: 1.0
+  micro_batch: 2
+  temperature: 1.0
+  ckpt_every: 25
+  kl_beta: 0.01               # method kl (other values: --tag b<beta> --set grpo.kl_beta=<beta>)
+  replay_frac: 0.25           # method replay: 4 of 16 prompts from earlier tasks
+  weight_decay: 0.0
+  refkl_beta: 1.0             # method refkl: KL(pi_prev || pi) on the unlabeled reference prompts
+  refkl_batch: 32
+  refkl_max_prompts: 1024
+  olora_lambda: 0.5           # method olora (O-LoRA's default)
+
+tripwire:
+  eps: 0.03                   # certified firing rate on every reference component
+  delta: 0.05                 # failure probability, split over components
+  positions_per_traj: 48
+  l2: 1.0e-4
+  lbfgs_iters: 200
+  # Dolly / AdvBench rows are used as [fit | calibration | evaluation]; task sets come from `splits` below
+  fit_ref: {dolly: 600, advbench: 100, general: 900}
+  cal_ref: {dolly: 700, advbench: 170, general: 700}
+
+pools: {gsm8k: 500, countdown: 500, kk: 500, mmlu: 500, advbench: 250, xstest: 450, dolly: 400}
+
+# index ranges in each task's training file: RL prompts, tripwire fitting as the new task (600),
+# fitting and calibration as an earlier task (300 + 300, unlabeled)
+splits:
+  rl: [0, 2400]
+  fit_new: [2400, 3000]
+  fit_old: [3000, 3300]
+  cal_old: [3300, 3600]

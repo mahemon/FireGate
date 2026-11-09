@@ -1,0 +1,8 @@
+# target: the hybridagent venv on Nova (Python 3.11, torch 2.6.0+cu124, transformers 5.x); transformers 4.51 also works
+torch>=2.1
+transformers>=4.46
+datasets
+huggingface_hub
+pyyaml
+numpy
+matplotlib    # optional, only for paper/figures/roc.pdf

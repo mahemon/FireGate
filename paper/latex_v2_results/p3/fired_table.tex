@@ -1,0 +1,42 @@
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Harmful prompts on which the gate fires, where the certificate allows any change (seed-pooled counts over every harmful pool with stored responses: held-out AdvBench, XSTest's unsafe prompts, the stress forms, the task-format requests, the format shifts and the external sets). Seq-GRPO behind the chosen and the deployed gate; trained: \methodp{}'s own runs under the deployed gate, where a response can change only if its gate fired. Fired: share of prompts on which the gate fired; refusal on fired: the base model's and the gated model's refusal rate there; newly answered: prompts the base model refuses and the gated model answers, as a share of all, with its 95\% Wilson interval; worst pool: the largest such share.}
+\label{tab:fired}
+\begin{tabular}{l l r r rr r r l}
+\toprule
+ & & & & \multicolumn{2}{c}{refusal on fired (\%)} & & & \\
+\cmidrule(lr){5-6}
+Experiment & Gate & $n$ & Fired (\%) & base & gated & Newly answered (\%) & [95\% CI] & worst pool (\%) \\
+\midrule
+Concise, Qwen2.5-1.5B & protect + passages$^\ast$ & 2438 & 6.5 & 94.3 & 3.1 & 5.95 & [5.08, 6.96] & xstest 22.17 \\
+ & deployed & 2438 & 2.6 & 50.0 & 0.0 & 1.31 & [0.93, 1.85] & ext\_hb\_ctx 8.00 \\
+ & trained & 1850 & 0.0 & -- & -- & 0.00 & [0.00, 0.21] & xstest 0.00 \\
+Concise-ctx, Qwen2.5-1.5B & protect + passages$^\ast$ & 2438 & 0.0 & 0.0 & 0.0 & 0.00 & [0.00, 0.16] & xstest 0.00 \\
+ & deployed & 2438 & 1.7 & 29.3 & 0.0 & 0.49 & [0.28, 0.86] & ext\_hb\_ctx 12.00 \\
+ & trained & 1850 & 0.2 & 0.0 & 66.7 & 0.00 & [0.00, 0.21] & xstest 0.00 \\
+SQuAD~2.0, Qwen2.5-1.5B & protect + passages$^\ast$ & 2938 & 0.2 & 83.3 & 0.0 & 0.17 & [0.07, 0.40] & st\_ctx\_question 1.20 \\
+ & deployed & 2938 & 0.1 & 50.0 & 0.0 & 0.03 & [0.01, 0.19] & st\_ctx 0.40 \\
+ & trained & 2350 & 0.1 & 50.0 & 50.0 & 0.00 & [0.00, 0.16] & xstest 0.00 \\
+NQ, Qwen2.5-1.5B & two-sided$^\ast$ & 2438 & 0.5 & 75.0 & 41.7 & 0.16 & [0.06, 0.42] & xstest 0.67 \\
+ & deployed & 2438 & 0.5 & 75.0 & 41.7 & 0.16 & [0.06, 0.42] & xstest 0.67 \\
+ & trained & 1850 & 1.0 & 83.3 & 16.7 & 0.65 & [0.37, 1.13] & xstest 2.00 \\
+IF, Qwen2.5-1.5B & two-sided + remedy$^\ast$ & 6438 & 0.0 & -- & -- & 0.00 & [0.00, 0.06] & xstest 0.00 \\
+ & deployed & 6438 & 70.0 & 59.3 & 5.5 & 37.96 & [36.78, 39.15] & st\_ifc\_para 62.13 \\
+ & trained & 3350 & 54.8 & 55.0 & 14.3 & 22.96 & [21.56, 24.41] & st\_ifc\_sys 46.00 \\
+IF, Qwen2.5-7B & two-sided + remedy$^\ast$ & 3938 & 0.0 & -- & -- & 0.00 & [0.00, 0.10] & xstest 0.00 \\
+ & deployed & 3938 & 53.4 & 60.3 & 67.1 & 4.14 & [3.56, 4.81] & advwrap\_ifc 15.07 \\
+ & trained & 3350 & 56.7 & 59.6 & 64.1 & 2.63 & [2.14, 3.23] & st\_ifc\_sys 7.20 \\
+3-task stream, Qwen2.5-1.5B & two-sided + remedy$^\ast$ & 5688 & 0.0 & -- & -- & 0.00 & [0.00, 0.07] & xstest 0.00 \\
+ & deployed & 5688 & 53.2 & 91.2 & 60.5 & 16.65 & [15.70, 17.64] & advwrap\_kk 71.47 \\
+ & trained & 5100 & 26.1 & 81.0 & 52.9 & 7.63 & [6.93, 8.39] & advwrap\_kk 37.47 \\
+NQ, OLMo-2-7B & two-sided$^\ast$ & 1938 & 0.5 & 100.0 & 100.0 & 0.00 & [0.00, 0.20] & xstest 0.00 \\
+ & deployed & 1938 & 0.5 & 100.0 & 100.0 & 0.00 & [0.00, 0.20] & xstest 0.00 \\
+ & trained & 1350 & 0.7 & 100.0 & 100.0 & 0.00 & [0.00, 0.28] & xstest 0.00 \\
+NQ, Llama-3.2-3B & two-sided$^\ast$ & 1938 & 0.0 & -- & -- & 0.00 & [0.00, 0.20] & xstest 0.00 \\
+ & deployed & 1938 & 0.0 & -- & -- & 0.00 & [0.00, 0.20] & xstest 0.00 \\
+ & trained & 1350 & 0.0 & -- & -- & 0.00 & [0.00, 0.28] & xstest 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table*}

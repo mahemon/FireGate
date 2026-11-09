@@ -1,0 +1,75 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\begin{minipage}[t]{0.535\linewidth}
+\centering
+\setlength{\tabcolsep}{2.2pt}
+\caption{Every method against the share of held-out Dolly responses it changes (Qwen2.5-1.5B, three seeds),
+each setting chosen on one half of the evaluation prompts and reported on the other. Lowest: smallest Dolly change;
+within 10\%: largest gain changing at most 10\%; best: largest gain. \#: settings tried; Chg.: Dolly responses
+changed (\%); gain in points; --: none within 10\%. The protect gate does not certify Dolly.}
+\label{tab:matched}
+\begin{tabular}{l r rr rr rr}
+\toprule
+ & & \multicolumn{2}{c}{lowest} & \multicolumn{2}{c}{within 10\%} & \multicolumn{2}{c}{best} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Method & \# & Chg. & Gain & Gain & Chg. & Gain & Chg. \\
+\midrule
+\multicolumn{8}{l}{\emph{NQ}} \\
+Seq-GRPO & 1 & 94.8 & +4.7 & -- & -- & +4.7 & 94.8 \\
+Seq-GRPO, LoRA $\times\alpha$ & 6 & 52.2 & $-$0.3 & -- & -- & +4.5 & 91.8 \\
++ KL & 6 & 54.2 & $-$0.4 & -- & -- & +3.7 & 87.7 \\
++ Ref-KL & 3 & 81.7 & +5.3 & -- & -- & +5.3 & 81.7 \\
++ Ref-KL, 4 samples & 2 & 73.3 & +0.5 & -- & -- & +0.8 & 73.0 \\
++ Null-space & 3 & 95.0 & +3.9 & -- & -- & +4.4 & 97.8 \\
++ Null-space, refreshed & 1 & 93.8 & +4.9 & -- & -- & +4.9 & 93.8 \\
++ EWC & 3 & 96.3 & +5.5 & -- & -- & +5.5 & 96.3 \\
++ A-GEM & 1 & 93.8 & +5.3 & -- & -- & +5.3 & 93.8 \\
+Router (uncalibrated) & 1 & 7.0 & +4.1 & +4.1 & 7.0 & +4.1 & 7.0 \\
+\methodp{} & 3 & 3.5 & +4.0 & +4.0 & 3.5 & +4.9 & 26.2 \\
+\methodp{}, whole sequence & 2 & 3.5 & +5.6 & +5.6 & 3.5 & +5.6 & 3.5 \\
+\methoda{} & 3 & 1.0 & +0.4 & +1.2 & 5.5 & +4.1 & 21.7 \\
+\midrule
+\multicolumn{8}{l}{\emph{SQuAD~2.0}} \\
+Seq-GRPO & 1 & 98.8 & +22.8 & -- & -- & +22.8 & 98.8 \\
+Seq-GRPO, LoRA $\times\alpha$ & 3 & 51.5 & +0.4 & -- & -- & +3.3 & 62.2 \\
++ KL & 2 & 52.3 & +0.7 & -- & -- & +0.4 & 52.0 \\
++ Ref-KL, protected components & 1 & 89.5 & +18.7 & -- & -- & +18.7 & 89.5 \\
++ Safety replay & 1 & 96.8 & +26.3 & -- & -- & +26.3 & 96.8 \\
+\methodp{} & 1 & 0.5 & +15.3 & +15.3 & 0.5 & +15.3 & 0.5 \\
+\methodp{}, protect & 1 & 46.2 & +32.8 & -- & -- & +32.8 & 46.2 \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.445\linewidth}
+\centering
+\setlength{\tabcolsep}{1.6pt}
+\caption{The gate against a known limit (synthetic Gaussian features, 20 repeats per cell, $\varepsilon=0.03$,
+$\delta=0.05$): coverage (\%) of the new task. Limit: $\beta^\ast$ of \cref{prop:percomp}; classifier: the paper's
+gate, PAC-calibrated; exact: the same score at the threshold whose true firing is $\varepsilon$; plug-in: the
+estimated Gaussian likelihood ratio, PAC-calibrated. $d$: dimension; $n$: new-task fitting prompts.}
+\label{tab:npgap}
+\begin{tabular}{l r rrrr rrrr}
+\toprule
+ & & \multicolumn{4}{c}{$d=32$} & \multicolumn{4}{c}{$d=256$} \\
+\cmidrule(lr){3-6}\cmidrule(lr){7-10}
+Scenario & $n$ & Limit & Class. & Exact & Plug-in & Limit & Class. & Exact & Plug-in \\
+\midrule
+shift & 100 & 73.6 & 55.4 & 61.1 & 35.5 & 73.4 & 29.6 & 34.1 & 5.6 \\
+ & 300 & 73.6 & 65.3 & 70.2 & 54.2 & 73.4 & 41.0 & 45.9 & 7.4 \\
+ & 1000 & 73.6 & 67.9 & 72.5 & 63.1 & 73.4 & 57.9 & 63.4 & 15.2 \\
+ & 3000 & 73.6 & 68.7 & 73.3 & 66.5 & 73.4 & 65.4 & 70.4 & 29.1 \\
+\midrule
+spread & 100 & 78.1 & 24.0 & 26.5 & 45.9 & 100.0 & 11.6 & 13.9 & 34.6 \\
+ & 300 & 78.1 & 28.7 & 31.3 & 63.7 & 100.0 & 15.1 & 18.0 & 76.4 \\
+ & 1000 & 78.1 & 30.4 & 33.6 & 70.8 & 100.0 & 24.2 & 27.5 & 98.9 \\
+ & 3000 & 78.1 & 30.4 & 34.5 & 73.1 & 100.0 & 28.2 & 31.8 & 99.9 \\
+\midrule
+overlap & 100 & 34.9 & 17.4 & 23.2 & 4.8 & 35.1 & 6.3 & 10.1 & 2.0 \\
+ & 300 & 34.9 & 21.6 & 28.1 & 12.3 & 35.1 & 9.3 & 13.9 & 2.1 \\
+ & 1000 & 34.9 & 22.3 & 30.0 & 18.0 & 35.1 & 18.1 & 24.6 & 3.3 \\
+ & 3000 & 34.9 & 23.6 & 30.7 & 24.1 & 35.1 & 20.2 & 28.4 & 6.0 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{table}

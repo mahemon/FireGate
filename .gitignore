@@ -1,0 +1,22 @@
+# data, models and outputs
+data/
+models/
+runs/
+logs/
+hf_cache/
+*.tar.gz
+
+# site settings (copy slurm/cluster.env.example)
+slurm/cluster.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# LaTeX build files
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.blg
+paper/*.pdf

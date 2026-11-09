@@ -1,0 +1,63 @@
+# v4 (Oct 27): the IF rung of the overlap ladder at 7B (Qwen2.5-7B-Instruct). Same task, data, splits, tripwire and
+# GRPO settings as ladder_ifc_q15.yaml; only the model, the batch sizes and the exp name differ (as overlap_q7.yaml
+# differs from overlap_q15.yaml). Purpose: the certified switch and the two-sided tripwire at 7B on a task with a
+# large gain (NQ gains at 7B are small).
+# v2 overlap ladder, task 1 (separable): held-out Dolly requests with one verifiable format constraint
+# (twcore/ladder.py). Tests whether ungated RL leaks trained formats into ordinary chat. Data: prepare_ladder.py.
+exp: v2_ladder_ifc_q7
+seed_dirs: true
+model_path: models/Qwen2.5-7B-Instruct
+data_dir: data
+out_dir: runs
+dtype: bfloat16
+seed: 0
+stream: [ifc]
+
+gate_layer: 8
+lora:
+  r: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+gen:
+  max_new_tokens: 512
+  max_prompt_tokens: 1024
+  eval_batch_size: 64
+  rollout_batch_size: 64
+  feature_batch_size: 16
+
+grpo:
+  steps: 150
+  prompts_per_step: 16
+  group_size: 8
+  lr: 5.0e-5
+  warmup_steps: 10
+  grad_clip: 1.0
+  micro_batch: 2
+  temperature: 1.0
+  ckpt_every: 25
+  kl_beta: 0.01
+  replay_frac: 0.25
+  weight_decay: 0.0
+  refkl_beta: 1.0
+  refkl_batch: 32
+  refkl_max_prompts: 1024
+  olora_lambda: 0.5
+
+tripwire:
+  eps: 0.03
+  delta: 0.05
+  positions_per_traj: 48
+  l2: 1.0e-4
+  lbfgs_iters: 200
+  fit_ref: {dolly: 600, advbench: 100, general: 900}
+  cal_ref: {dolly: 700, advbench: 170, general: 700}
+
+# no stream-task pools other than nq; the reference / held-out pools are the same as the main experiment
+pools: {ifc: 500, mmlu: 500, advbench: 250, xstest: 450, dolly: 400}
+
+splits:
+  rl: [0, 2400]
+  fit_new: [2400, 3000]
+  fit_old: [3000, 3300]
+  cal_old: [3300, 3600]

@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{The linear classifier against the Gaussian ratio on every model--task pair, both fitted and calibrated at $\varepsilon=0.03$ on the deployed reference from stored features, settings fixed before any result. $\beta$: coverage of unlabeled RL prompts (\%), a lower bound on $\beta^\ast$; Dolly: held-out firing (\%) [95\% bound]; MMLU: firing on MMLU, which no component samples (\%); Gain: Seq-GRPO's gain behind the gate (points), against its own gain $\bar G$.}
+\label{tab:scoregrid}
+\begin{tabular}{l l r rrrr rrrr}
+\toprule
+ & & & \multicolumn{4}{c}{linear classifier} & \multicolumn{4}{c}{Gaussian ratio} \\
+\cmidrule(lr){4-7}\cmidrule(lr){8-11}
+Model & Task & $\bar G$ & $\beta$ & Dolly & MMLU & Gain & $\beta$ & Dolly & MMLU & Gain \\
+\midrule
+Qwen2.5-1.5B & IF & +38.7 & 100.0 & 2.0 [3.6] & 100.0 & +38.7 & 100.0 & 0.0 [0.7] & 100.0 & +38.7 \\
+Qwen2.5-1.5B & NQ & +5.2 & 92.5 & 2.8 [4.5] & 0.8 & +4.7 & 95.4 & 3.0 [4.8] & 0.0 & +4.7 \\
+Qwen2.5-7B & IF & +12.9 & 100.0 & 2.2 [3.9] & 100.0 & +12.9 & 100.0 & 2.5 [4.2] & 100.0 & +12.9 \\
+Qwen2.5-7B & NQ & +3.8 & 97.6 & 2.5 [4.2] & 0.0 & +3.5 & 98.6 & 2.0 [3.6] & 0.0 & +3.7 \\
+OLMo-2-7B & NQ & +5.9 & 95.7 & 2.0 [3.6] & 0.0 & +5.3 & 97.6 & 2.8 [4.5] & 0.0 & +5.6 \\
+Llama-3.2-3B & IF & +14.3 & 100.0 & 1.8 [3.3] & 97.6 & +14.3 & 100.0 & 1.8 [3.3] & 100.0 & +14.3 \\
+Llama-3.2-3B & NQ & +10.8 & 86.5 & 2.0 [3.6] & 0.0 & +9.1 & 93.5 & 2.5 [4.2] & 0.0 & +10.3 \\
+Llama-3.1-8B & IF & +11.4 & 100.0 & 1.0 [2.3] & 98.0 & +11.4 & 100.0 & 1.2 [2.6] & 100.0 & +11.4 \\
+Llama-3.1-8B & NQ & +7.1 & 96.3 & 2.8 [4.5] & 0.0 & +6.7 & 96.8 & 2.5 [4.2] & 0.0 & +6.9 \\
+DeepSeek-LLM-7B & IF & +35.3 & 100.0 & 2.8 [4.5] & 94.6 & +35.3 & 100.0 & 2.5 [4.2] & 100.0 & +35.3 \\
+DeepSeek-LLM-7B & NQ & +10.7 & 84.0 & 1.2 [2.6] & 0.0 & +8.7 & 86.5 & 1.5 [2.9] & 0.0 & +9.3 \\
+Mistral-7B & IF & +34.8 & 100.0 & 1.2 [2.6] & 97.2 & +34.8 & 100.0 & 2.2 [3.9] & 100.0 & +34.8 \\
+Mistral-7B & NQ & +9.5 & 94.7 & 2.5 [4.2] & 0.0 & +8.2 & 93.8 & 1.2 [2.6] & 0.0 & +8.4 \\
+\bottomrule
+\end{tabular}
+\end{table}

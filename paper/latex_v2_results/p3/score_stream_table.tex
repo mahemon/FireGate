@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.4pt}
+\caption{Score classes on the task streams, each stage calibrated as the deployed stage gate at $\varepsilon=0.03$ and $\delta/4$, from stored features. $\beta_k$: coverage of stage $k$'s unlabeled RL prompts (\%), a lower bound on that stage's limit; union: firing of the stage gates' union on held-out prompts (\%).}
+\label{tab:scorestream}
+\begin{tabular}{l l rrrrr rrr}
+\toprule
+ & & \multicolumn{5}{c}{$\beta_k$} & \multicolumn{3}{c}{union fires} \\
+Stream & Score & 1 & 2 & 3 & 4 & 5 & Dolly & AdvBench & MMLU \\
+\midrule
+3-task stream, Qwen2.5-1.5B & linear classifier & 100.0 & 100.0 & 100.0 & -- & -- & 3.2 & 0.0 & 1.6 \\
+ & Gaussian ratio & 100.0 & 100.0 & 100.0 & -- & -- & 1.8 & 0.0 & 99.6 \\
+ & 15-NN similarity & 100.0 & 100.0 & 100.0 & -- & -- & 2.0 & 0.0 & 42.8 \\
+ & MLP & 100.0 & 100.0 & 100.0 & -- & -- & 1.8 & 0.4 & 0.6 \\
+3-task stream, Qwen2.5-7B & linear classifier & 100.0 & 100.0 & 100.0 & -- & -- & 1.8 & 0.0 & 12.4 \\
+ & Gaussian ratio & 100.0 & 100.0 & 100.0 & -- & -- & 3.2 & 0.0 & 63.8 \\
+ & 15-NN similarity & 100.0 & 100.0 & 100.0 & -- & -- & 2.5 & 0.0 & 100.0 \\
+ & MLP & 100.0 & 100.0 & 100.0 & -- & -- & 1.2 & 0.0 & 7.6 \\
+5-task stream, Qwen2.5-1.5B & linear classifier & 100.0 & 100.0 & 100.0 & 96.3 & 100.0 & 4.8 & 0.0 & 60.8 \\
+ & Gaussian ratio & 100.0 & 100.0 & 100.0 & 94.9 & 100.0 & 2.5 & 0.0 & 100.0 \\
+ & 15-NN similarity & 100.0 & 100.0 & 100.0 & 92.1 & 100.0 & 2.0 & 0.0 & 45.0 \\
+ & MLP & 100.0 & 100.0 & 100.0 & 96.7 & 100.0 & 3.0 & 0.4 & 4.4 \\
+\bottomrule
+\end{tabular}
+\end{table}

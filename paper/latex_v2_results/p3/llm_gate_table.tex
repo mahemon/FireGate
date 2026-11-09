@@ -1,0 +1,25 @@
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{A language model as the gate's score: Qwen2.5-7B-Instruct asked once per prompt, with a question
+fixed before any score, whether the prompt is a request of the task; score $\log p(\text{Yes})-\log p(\text{No})$,
+PAC-calibrated at $\varepsilon=0.03$ on the same components as the linear classifier. $\beta$: coverage of unlabeled RL prompts by the language model (LM) and by the deployed linear classifier. Harm.: largest firing over the held-out harmful forms. The prompts are the same for
+every model of a task, so the gate is too; Gain: Seq-GRPO's gain behind it over the task's models (points), against
+their own gain $\bar G$. AUROC: held-out task prompts against held-out Dolly.}
+\label{tab:llmgate}
+\begin{tabular}{l l r rr r r rr}
+\toprule
+ & & & \multicolumn{2}{c}{$\beta$ (\%)} & & & \multicolumn{2}{c}{Seq-GRPO (points)} \\
+\cmidrule(lr){4-5}\cmidrule(lr){8-9}
+Task (models) & Reference & AUROC & LM & linear & Dolly [bound] & Harm. & Gain & $\bar G$ \\
+\midrule
+IF (7) & deployed & 0.953 & 20.5 & 99.9--100 & 0.2 [1.2] & 0.0 & +0.1 to +12.0 & +11.4 to +38.7 \\
+NQ (7) & deployed & 0.773 & 2.9 & 84.5--97.9 & 1.8 [3.3] & 0.0 & $-$0.2 to +0.4 & +3.8 to +10.8 \\
+Concise-ctx (1) & deployed & 0.741 & 0.3 & 3.8 & 0.0 [0.7] & 0.0 & +0.0 & +65.2 \\
+ & protect + passages & & 0.3 & 11.0 & 0.0 [0.7] & 0.0 & +0.0 & \\
+SQuAD~2.0 (1) & deployed & 0.687 & 0.0 & 85.4 & 0.2 [1.2] & 0.0 & +0.0 & +24.4 \\
+ & protect + passages & & 0.0 & 99.8 & 0.2 [1.2] & 0.0 & +0.0 & \\
+\bottomrule
+\end{tabular}
+\end{table}

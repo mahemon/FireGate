@@ -1,0 +1,64 @@
+# v2 overlap experiment at 7B (Qwen2.5-7B-Instruct).
+# v2 overlap experiment (Theorem 4.1), Qwen2.5-1.5B-Instruct, three seeds: one new task whose prompts look like
+# the reference prompts. Runs live in runs/v2_overlap_q15/s<seed>/<method>[_<tag>]; sweeps use tags
+# (tripwire_e0.10, kl_b0.2, refkl_b10, ...).
+# Natural Questions (closed book) given as plain questions, like Dolly's open-QA prompts, so the tripwire cannot
+# separate them cleanly from Dolly. Ungated RL that learns short direct answers should also change Dolly;
+# Tripwire keeps Dolly within its certificate and pays in activation on NQ. Same model and training as v2.
+exp: v2_overlap_q7
+seed_dirs: true
+model_path: models/Qwen2.5-7B-Instruct
+data_dir: data
+out_dir: runs
+dtype: bfloat16
+seed: 0
+stream: [nq]
+
+gate_layer: 8
+lora:
+  r: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+gen:
+  max_new_tokens: 512
+  max_prompt_tokens: 1024
+  eval_batch_size: 64
+  rollout_batch_size: 64
+  feature_batch_size: 16
+
+grpo:
+  steps: 150
+  prompts_per_step: 16
+  group_size: 8
+  lr: 5.0e-5
+  warmup_steps: 10
+  grad_clip: 1.0
+  micro_batch: 2
+  temperature: 1.0
+  ckpt_every: 25
+  kl_beta: 0.01
+  replay_frac: 0.25
+  weight_decay: 0.0
+  refkl_beta: 1.0
+  refkl_batch: 32
+  refkl_max_prompts: 1024
+  olora_lambda: 0.5
+
+tripwire:
+  eps: 0.03
+  delta: 0.05
+  positions_per_traj: 48
+  l2: 1.0e-4
+  lbfgs_iters: 200
+  fit_ref: {dolly: 600, advbench: 100, general: 900}
+  cal_ref: {dolly: 700, advbench: 170, general: 700}
+
+# no stream-task pools other than nq; the reference / held-out pools are the same as the main experiment
+pools: {nq: 500, mmlu: 500, advbench: 250, xstest: 450, dolly: 400}
+
+splits:
+  rl: [0, 2400]
+  fit_new: [2400, 3000]
+  fit_old: [3000, 3300]
+  cal_old: [3300, 3600]

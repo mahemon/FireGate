@@ -1,0 +1,595 @@
+\begin{thebibliography}{100}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Aakanksha et~al.(2024)Aakanksha, Ahmadian, Ermis,
+  et~al.]{aakanksha2024prism}
+Aakanksha, Ahmadian, A., Ermis, B., et~al.
+\newblock The multilingual alignment prism: Aligning global and local
+  preferences to reduce harm.
+\newblock In \emph{EMNLP}, 2024.
+
+\bibitem[Aljundi et~al.(2017)Aljundi, Chakravarty, and
+  Tuytelaars]{aljundi2017expertgate}
+Aljundi, R., Chakravarty, P., and Tuytelaars, T.
+\newblock Expert gate: Lifelong learning with a network of experts.
+\newblock In \emph{CVPR}, 2017.
+
+\bibitem[Alssum et~al.(2025)Alssum, Itani, Hammoud,
+  et~al.]{alssum2025unforgotten}
+Alssum, L., Itani, H., Hammoud, H. A. A.~K., et~al.
+\newblock Unforgotten safety: Preserving safety alignment of large language
+  models with continual learning.
+\newblock \emph{arXiv preprint arXiv:2512.10150}, 2025.
+
+\bibitem[Arditi et~al.(2024)Arditi, Obeso, Syed, et~al.]{arditi2024refusal}
+Arditi, A., Obeso, O., Syed, A., et~al.
+\newblock Refusal in language models is mediated by a single direction.
+\newblock In \emph{NeurIPS}, 2024.
+
+\bibitem[Austin et~al.(2021)Austin, Odena, Nye, et~al.]{austin2021mbpp}
+Austin, J., Odena, A., Nye, M., et~al.
+\newblock Program synthesis with large language models.
+\newblock \emph{arXiv preprint arXiv:2108.07732}, 2021.
+
+\bibitem[Balachandran(2026)]{balachandran2026pay}
+Balachandran, V.~B.
+\newblock Pay only for disagreement: Certified no-regression verdicts for model
+  updates with matching label-complexity bounds.
+\newblock \emph{arXiv preprint arXiv:2609.17560}, 2026.
+
+\bibitem[Bates et~al.(2021)Bates, Angelopoulos, Lei, et~al.]{bates2021rcps}
+Bates, S., Angelopoulos, A.~N., Lei, L., et~al.
+\newblock Distribution-free, risk-controlling prediction sets.
+\newblock \emph{Journal of the ACM}, 68\penalty0 (6), 2021.
+
+\bibitem[Betley et~al.(2026)Betley, Warncke, Sztyber-Betley,
+  et~al.]{betley2026training}
+Betley, J., Warncke, N., Sztyber-Betley, A., et~al.
+\newblock Training large language models on narrow tasks can lead to broad
+  misalignment.
+\newblock \emph{Nature}, 649:\penalty0 584--589, 2026.
+
+\bibitem[Bi et~al.(2024)Bi, Chen, et~al.]{bi2024deepseekllm}
+Bi, X., Chen, D., et~al.
+\newblock {DeepSeek LLM}: Scaling open-source language models with longtermism.
+\newblock \emph{arXiv preprint arXiv:2401.02954}, 2024.
+
+\bibitem[Biderman et~al.(2024)Biderman, Portes, Gonzalez~Ortiz,
+  et~al.]{biderman2024lora}
+Biderman, D., Portes, J., Gonzalez~Ortiz, J.~J., et~al.
+\newblock {LoRA} learns less and forgets less.
+\newblock \emph{Transactions on Machine Learning Research}, 2024.
+
+\bibitem[Cao(2025)]{cao2025fight}
+Cao, W.
+\newblock Fight fire with fire: Defending against malicious {RL} fine-tuning
+  via reward neutralization.
+\newblock \emph{arXiv preprint arXiv:2505.04578}, 2025.
+
+\bibitem[Chaudhry et~al.(2019)Chaudhry, Ranzato, Rohrbach, and
+  Elhoseiny]{chaudhry2019agem}
+Chaudhry, A., Ranzato, M., Rohrbach, M., and Elhoseiny, M.
+\newblock Efficient lifelong learning with {A-GEM}.
+\newblock In \emph{ICLR}, 2019.
+
+\bibitem[Chen et~al.(2026)Chen, Razin, Narasimhan, and Chen]{chen2025retaining}
+Chen, H., Razin, N., Narasimhan, K., and Chen, D.
+\newblock Retaining by doing: The role of on-policy data in mitigating
+  forgetting.
+\newblock In \emph{ICML}, 2026.
+
+\bibitem[Chen et~al.(2025)Chen, Shen, Das, and Chen]{chen2025fundamental}
+Chen, P.-Y., Shen, H., Das, P., and Chen, T.
+\newblock Fundamental safety-capability trade-offs in fine-tuning large
+  language models.
+\newblock \emph{arXiv preprint arXiv:2503.20807}, 2025.
+
+\bibitem[Clark et~al.(2019)Clark, Lee, Chang, et~al.]{clark2019boolq}
+Clark, C., Lee, K., Chang, M.-W., et~al.
+\newblock {BoolQ}: Exploring the surprising difficulty of natural yes/no
+  questions.
+\newblock In \emph{NAACL}, 2019.
+
+\bibitem[Clark et~al.(2018)Clark, Cowhey, Etzioni, et~al.]{clark2018arc}
+Clark, P., Cowhey, I., Etzioni, O., et~al.
+\newblock Think you have solved question answering? {T}ry {ARC}, the {AI2}
+  reasoning challenge.
+\newblock \emph{arXiv preprint arXiv:1803.05457}, 2018.
+
+\bibitem[Clopper \& Pearson(1934)Clopper and Pearson]{clopper1934}
+Clopper, C.~J. and Pearson, E.~S.
+\newblock The use of confidence or fiducial limits illustrated in the case of
+  the binomial.
+\newblock \emph{Biometrika}, 26\penalty0 (4):\penalty0 404--413, 1934.
+
+\bibitem[Cobbe et~al.(2021)Cobbe, Kosaraju, Bavarian, et~al.]{cobbe2021gsm8k}
+Cobbe, K., Kosaraju, V., Bavarian, M., et~al.
+\newblock Training verifiers to solve math word problems.
+\newblock \emph{arXiv preprint arXiv:2110.14168}, 2021.
+
+\bibitem[Conover et~al.(2023)Conover, Hayes, Mathur, et~al.]{conover2023dolly}
+Conover, M., Hayes, M., Mathur, A., et~al.
+\newblock Free {Dolly}: Introducing the world's first truly open
+  instruction-tuned {LLM}.
+\newblock Databricks blog, 2023.
+
+\bibitem[Dantzig \& Wald(1951)Dantzig and Wald]{dantzig1951fundamental}
+Dantzig, G.~B. and Wald, A.
+\newblock On the fundamental lemma of {Neyman} and {Pearson}.
+\newblock \emph{The Annals of Mathematical Statistics}, 22\penalty0 (1), 1951.
+
+\bibitem[Deng et~al.(2024)Deng, Zhang, Pan, and Bing]{deng2024multilingual}
+Deng, Y., Zhang, W., Pan, S.~J., and Bing, L.
+\newblock Multilingual jailbreak challenges in large language models.
+\newblock In \emph{ICLR}, 2024.
+
+\bibitem[Donsker \& Varadhan(1983)Donsker and Varadhan]{donsker1983asymptotic}
+Donsker, M.~D. and Varadhan, S. R.~S.
+\newblock Asymptotic evaluation of certain {M}arkov process expectations for
+  large time. {IV}.
+\newblock \emph{Communications on Pure and Applied Mathematics}, 36\penalty0
+  (2):\penalty0 183--212, 1983.
+
+\bibitem[Feng et~al.(2025)Feng, Wang, Lv, et~al.]{feng2025token}
+Feng, W., Wang, L., Lv, P., et~al.
+\newblock Token buncher: Shielding {LLMs} from harmful reinforcement learning
+  fine-tuning.
+\newblock \emph{arXiv preprint arXiv:2508.20697}, 2025.
+
+\bibitem[Friedman \& Meir(2026)Friedman and Meir]{friedman2026bounds}
+Friedman, L. and Meir, R.
+\newblock Data-dependent and oracle bounds on forgetting in continual learning.
+\newblock In \emph{CoLLAs}, 2026.
+
+\bibitem[Grattafiori et~al.(2024)Grattafiori, Dubey,
+  et~al.]{grattafiori2024llama3}
+Grattafiori, A., Dubey, A., et~al.
+\newblock The {Llama} 3 herd of models.
+\newblock \emph{arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem[Hahm et~al.(2026)Hahm, Min, Jin, and Lee]{hahm2026unintended}
+Hahm, D., Min, T., Jin, W., and Lee, K.
+\newblock Unintended misalignment from agentic fine-tuning: Risks and
+  mitigation.
+\newblock In \emph{AAAI}, 2026.
+
+\bibitem[Halko et~al.(2011)Halko, Martinsson, and Tropp]{halko2011finding}
+Halko, N., Martinsson, P.-G., and Tropp, J.~A.
+\newblock Finding structure with randomness: Probabilistic algorithms for
+  constructing approximate matrix decompositions.
+\newblock \emph{SIAM Review}, 53\penalty0 (2):\penalty0 217--288, 2011.
+
+\bibitem[Hendrycks et~al.(2021{\natexlab{a}})Hendrycks, Burns, Basart,
+  et~al.]{hendrycks2021mmlu}
+Hendrycks, D., Burns, C., Basart, S., et~al.
+\newblock Measuring massive multitask language understanding.
+\newblock In \emph{ICLR}, 2021{\natexlab{a}}.
+
+\bibitem[Hendrycks et~al.(2021{\natexlab{b}})Hendrycks, Burns, Kadavath,
+  et~al.]{hendrycks2021math}
+Hendrycks, D., Burns, C., Kadavath, S., et~al.
+\newblock Measuring mathematical problem solving with the {MATH} dataset.
+\newblock In \emph{NeurIPS Datasets and Benchmarks}, 2021{\natexlab{b}}.
+
+\bibitem[Hoy \& Celik(2025)Hoy and Celik]{hoy2025stable}
+Hoy, W. and Celik, N.
+\newblock {STABLE}: Gated continual learning for large language models.
+\newblock \emph{arXiv preprint arXiv:2510.16089}, 2025.
+
+\bibitem[Hu et~al.(2022)Hu, Shen, Wallis, et~al.]{hu2022lora}
+Hu, E.~J., Shen, Y., Wallis, P., et~al.
+\newblock {LoRA}: Low-rank adaptation of large language models.
+\newblock In \emph{ICLR}, 2022.
+
+\bibitem[Huang et~al.(2024)Huang, Hu, Ilhan, et~al.]{huang2024harmful}
+Huang, T., Hu, S., Ilhan, F., et~al.
+\newblock Harmful fine-tuning attacks and defenses for large language models: A
+  survey.
+\newblock \emph{arXiv preprint arXiv:2409.18169}, 2024.
+
+\bibitem[Ibrahim et~al.(2026)Ibrahim, Hafner, and Rocher]{ibrahim2026warm}
+Ibrahim, L., Hafner, F.~S., and Rocher, L.
+\newblock Training language models to be warm can reduce accuracy and increase
+  sycophancy.
+\newblock \emph{Nature}, 652:\penalty0 1159--1165, 2026.
+
+\bibitem[Jiang et~al.(2023)Jiang, Sablayrolles, Mensch, Bamford, Chaplot,
+  de~las Casas, Bressand, Lengyel, Lample, Saulnier, et~al.]{jiang2023mistral}
+Jiang, A.~Q., Sablayrolles, A., Mensch, A., Bamford, C., Chaplot, D.~S., de~las
+  Casas, D., Bressand, F., Lengyel, G., Lample, G., Saulnier, L., et~al.
+\newblock Mistral 7{B}.
+\newblock \emph{arXiv preprint arXiv:2310.06825}, 2023.
+
+\bibitem[Joshi et~al.(2017)Joshi, Choi, Weld, and
+  Zettlemoyer]{joshi2017triviaqa}
+Joshi, M., Choi, E., Weld, D.~S., and Zettlemoyer, L.
+\newblock {TriviaQA}: A large scale distantly supervised challenge dataset for
+  reading comprehension.
+\newblock In \emph{Proceedings of the 55th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pp.\  1601--1611,
+  2017.
+
+\bibitem[Kim et~al.(2025)Kim, Song, Shin, and Son]{kim2025defending}
+Kim, J., Song, M., Shin, S., and Son, S.
+\newblock Defending {MoE} {LLMs} against harmful fine-tuning via safety routing
+  alignment.
+\newblock \emph{arXiv preprint arXiv:2509.22745}, 2025.
+
+\bibitem[Kirkpatrick et~al.(2017)Kirkpatrick, Pascanu, Rabinowitz,
+  et~al.]{kirkpatrick2017ewc}
+Kirkpatrick, J., Pascanu, R., Rabinowitz, N., et~al.
+\newblock Overcoming catastrophic forgetting in neural networks.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 114\penalty0
+  (13):\penalty0 3521--3526, 2017.
+
+\bibitem[K{\"o}pf et~al.(2023)K{\"o}pf, Kilcher, von R{\"u}tte,
+  et~al.]{kopf2023openassistant}
+K{\"o}pf, A., Kilcher, Y., von R{\"u}tte, D., et~al.
+\newblock {OpenAssistant} conversations -- democratizing large language model
+  alignment.
+\newblock In \emph{NeurIPS Datasets and Benchmarks}, 2023.
+
+\bibitem[Kwiatkowski et~al.(2019)Kwiatkowski, Palomaki, Redfield,
+  et~al.]{kwiatkowski2019nq}
+Kwiatkowski, T., Palomaki, J., Redfield, O., et~al.
+\newblock Natural questions: A benchmark for question answering research.
+\newblock \emph{Transactions of the Association for Computational Linguistics},
+  7:\penalty0 452--466, 2019.
+
+\bibitem[Lai et~al.(2026)Lai, Zhao, Feng, et~al.]{lai2025reinforcement}
+Lai, S., Zhao, H., Feng, R., et~al.
+\newblock Reinforcement fine-tuning naturally mitigates forgetting in continual
+  post-training.
+\newblock In \emph{ICML}, 2026.
+\newblock arXiv:2507.05386.
+
+\bibitem[Lee et~al.(2019)Lee, Chang, and Toutanova]{lee2019latent}
+Lee, K., Chang, M.-W., and Toutanova, K.
+\newblock Latent retrieval for weakly supervised open domain question
+  answering.
+\newblock In \emph{ACL}, 2019.
+
+\bibitem[Lehmann \& Romano(2022)Lehmann and Romano]{lehmann2022testing}
+Lehmann, E.~L. and Romano, J.~P.
+\newblock \emph{Testing Statistical Hypotheses}.
+\newblock Springer, fourth edition, 2022.
+
+\bibitem[Li \& Lee(2024)Li and Lee]{li2024examining}
+Li, C.-A. and Lee, H.-Y.
+\newblock Examining forgetting in continual pre-training of aligned large
+  language models.
+\newblock \emph{arXiv preprint arXiv:2401.03129}, 2024.
+
+\bibitem[Li \& Hoiem(2018)Li and Hoiem]{li2018lwf}
+Li, Z. and Hoiem, D.
+\newblock Learning without forgetting.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 40\penalty0 (12):\penalty0 2935--2947, 2018.
+
+\bibitem[Liang \& Li(2024)Liang and Li]{liang2024inflora}
+Liang, Y.-S. and Li, W.-J.
+\newblock {InfLoRA}: Interference-free low-rank adaptation for continual
+  learning.
+\newblock In \emph{CVPR}, 2024.
+
+\bibitem[Liang et~al.(2025)Liang, Chen, and Li]{liang2025gainlora}
+Liang, Y.-S., Chen, J.-R., and Li, W.-J.
+\newblock Gated integration of low-rank adaptation for continual learning of
+  large language models.
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Lindvall(1992)]{lindvall1992coupling}
+Lindvall, T.
+\newblock \emph{Lectures on the Coupling Method}.
+\newblock Wiley, 1992.
+
+\bibitem[Luo et~al.(2026{\natexlab{a}})Luo, Zhang, Xu, et~al.]{luo2026beyond}
+Luo, L., Zhang, G., Xu, H., et~al.
+\newblock Continual reasoning gym: Diagnosing and harnessing shared reasoning
+  in continual {RLVR}.
+\newblock \emph{arXiv preprint arXiv:2608.18574}, 2026{\natexlab{a}}.
+
+\bibitem[Luo et~al.(2026{\natexlab{b}})Luo, Wang, Zhou, et~al.]{luo2026cpo}
+Luo, M.-L., Wang, Z.-X., Zhou, Z.-H., et~al.
+\newblock {RL} forgets! {T}owards continual policy optimization.
+\newblock \emph{arXiv preprint arXiv:2607.04364}, 2026{\natexlab{b}}.
+
+\bibitem[Lyu et~al.(2024)Lyu, Zhao, Gu, et~al.]{lyu2024keeping}
+Lyu, K., Zhao, H., Gu, X., et~al.
+\newblock Keeping {LLMs} aligned after fine-tuning: The crucial role of prompt
+  templates.
+\newblock In \emph{NeurIPS}, 2024.
+
+\bibitem[Martens \& Grosse(2015)Martens and Grosse]{martens2015kfac}
+Martens, J. and Grosse, R.
+\newblock Optimizing neural networks with {K}ronecker-factored approximate
+  curvature.
+\newblock In \emph{ICML}, 2015.
+
+\bibitem[Mazeika et~al.(2024)Mazeika, Phan, Yin, et~al.]{mazeika2024harmbench}
+Mazeika, M., Phan, L., Yin, X., et~al.
+\newblock {HarmBench}: A standardized evaluation framework for automated red
+  teaming and robust refusal.
+\newblock In \emph{ICML}, 2024.
+
+\bibitem[Mihaylov et~al.(2018)Mihaylov, Clark, Khot, and
+  Sabharwal]{mihaylov2018openbookqa}
+Mihaylov, T., Clark, P., Khot, T., and Sabharwal, A.
+\newblock Can a suit of armor conduct electricity? {A} new dataset for open
+  book question answering.
+\newblock In \emph{EMNLP}, 2018.
+
+\bibitem[Mitchell et~al.(2022)Mitchell, Lin, Bosselut,
+  et~al.]{mitchell2022serac}
+Mitchell, E., Lin, C., Bosselut, A., et~al.
+\newblock Memory-based model editing at scale.
+\newblock In \emph{ICML}, 2022.
+
+\bibitem[Mondal et~al.(2026)Mondal, Banik, Apurba, and
+  Al~Mahmud]{mondal2026when}
+Mondal, J.~J., Banik, M., Apurba, M. S.~A., and Al~Mahmud, M.~M.
+\newblock When can old evaluations certify a new model? {L}abel-efficient
+  release decisions under evaluator drift.
+\newblock \emph{arXiv preprint arXiv:2609.32267}, 2026.
+
+\bibitem[Neyman \& Pearson(1933)Neyman and Pearson]{neyman1933}
+Neyman, J. and Pearson, E.~S.
+\newblock On the problem of the most efficient tests of statistical hypotheses.
+\newblock \emph{Philosophical Transactions of the Royal Society A},
+  231:\penalty0 289--337, 1933.
+
+\bibitem[Ong et~al.(2025)]{ong2024routellm}
+Ong, I. et~al.
+\newblock {RouteLLM}: Learning to route {LLMs} from preference data.
+\newblock In \emph{ICLR}, 2025.
+
+\bibitem[Pan et~al.(2025)Pan, Zhang, Wang, et~al.]{pan2025tinyzero}
+Pan, J., Zhang, J., Wang, X., et~al.
+\newblock {TinyZero}.
+\newblock \url{https://github.com/Jiayi-Pan/TinyZero}, 2025.
+
+\bibitem[Pham et~al.(2025)Pham, Thalanki, Sun, et~al.]{pham2025preventing}
+Pham, A., Thalanki, M., Sun, M., et~al.
+\newblock Preventing catastrophic forgetting: Behavior-aware sampling for safer
+  language model fine-tuning.
+\newblock \emph{arXiv preprint arXiv:2510.21885}, 2025.
+
+\bibitem[Qi et~al.(2024)Qi, Zeng, Xie, et~al.]{qi2024finetuning}
+Qi, X., Zeng, Y., Xie, T., et~al.
+\newblock Fine-tuning aligned language models compromises safety, even when
+  users do not intend to!
+\newblock In \emph{ICLR}, 2024.
+
+\bibitem[{Qwen Team}(2024)]{qwen2025qwen25}
+{Qwen Team}.
+\newblock {Qwen2.5} technical report.
+\newblock \emph{arXiv preprint arXiv:2412.15115}, 2024.
+
+\bibitem[Rajpurkar et~al.(2018)Rajpurkar, Jia, and Liang]{rajpurkar2018squad2}
+Rajpurkar, P., Jia, R., and Liang, P.
+\newblock Know what you don't know: Unanswerable questions for {SQuAD}.
+\newblock In \emph{ACL (Short Papers)}, 2018.
+
+\bibitem[Ramdas et~al.(2023)Ramdas, Gr{\"u}nwald, Vovk, and
+  Shafer]{ramdas2023gametheoretic}
+Ramdas, A., Gr{\"u}nwald, P., Vovk, V., and Shafer, G.
+\newblock Game-theoretic statistics and safe anytime-valid inference.
+\newblock \emph{Statistical Science}, 38\penalty0 (4):\penalty0 576--601, 2023.
+
+\bibitem[Richter et~al.(2025)Richter, He, Minervini, and
+  Kusner]{richter2025auditing}
+Richter, L., He, X., Minervini, P., and Kusner, M.~J.
+\newblock An auditing test to detect behavioral shift in language models.
+\newblock In \emph{ICLR}, 2025.
+
+\bibitem[Rigollet \& Tong(2011)Rigollet and Tong]{rigollet2011np}
+Rigollet, P. and Tong, X.
+\newblock {Neyman-Pearson} classification, convexity and stochastic
+  constraints.
+\newblock \emph{Journal of Machine Learning Research}, 12\penalty0
+  (86):\penalty0 2831--2855, 2011.
+
+\bibitem[Ritter et~al.(2018)Ritter, Botev, and Barber]{ritter2018laplace}
+Ritter, H., Botev, A., and Barber, D.
+\newblock Online structured {L}aplace approximations for overcoming
+  catastrophic forgetting.
+\newblock In \emph{NeurIPS}, 2018.
+
+\bibitem[Rojas~Nunez et~al.(2026)Rojas~Nunez, Sawant, Allen,
+  et~al.]{rojasnunez2026mechanistic}
+Rojas~Nunez, J., Sawant, V., Allen, N., et~al.
+\newblock Mechanistic origins of catastrophic forgetting: Why {RL} preserves
+  circuits better than {SFT}?
+\newblock \emph{arXiv preprint arXiv:2605.28860}, 2026.
+
+\bibitem[Rolnick et~al.(2019)Rolnick, Ahuja, Schwarz,
+  et~al.]{rolnick2019replay}
+Rolnick, D., Ahuja, A., Schwarz, J., et~al.
+\newblock Experience replay for continual learning.
+\newblock In \emph{NeurIPS}, 2019.
+
+\bibitem[R{\"o}ttger et~al.(2024)R{\"o}ttger, Kirk, Vidgen,
+  et~al.]{rottger2024xstest}
+R{\"o}ttger, P., Kirk, H.~R., Vidgen, B., et~al.
+\newblock {XSTest}: A test suite for identifying exaggerated safety behaviours
+  in large language models.
+\newblock In \emph{NAACL}, 2024.
+
+\bibitem[Sabbaghi et~al.(2026)Sabbaghi, Pappas, Javanmard, and
+  Hassani]{sabbaghi2026robust}
+Sabbaghi, M., Pappas, G., Javanmard, A., and Hassani, H.
+\newblock Robust policy optimization to prevent catastrophic forgetting.
+\newblock \emph{arXiv preprint arXiv:2602.08813}, 2026.
+
+\bibitem[Scialom et~al.(2022)Scialom, Chakrabarty, and
+  Muresan]{scialom2022fine}
+Scialom, T., Chakrabarty, T., and Muresan, S.
+\newblock Fine-tuned language models are continual learners.
+\newblock In \emph{EMNLP}, 2022.
+
+\bibitem[Shao et~al.(2024)Shao, Wang, Zhu, et~al.]{shao2024deepseekmath}
+Shao, Z., Wang, P., Zhu, Q., et~al.
+\newblock {DeepSeekMath}: Pushing the limits of mathematical reasoning in open
+  language models.
+\newblock \emph{arXiv preprint arXiv:2402.03300}, 2024.
+
+\bibitem[Shenfeld et~al.(2026)Shenfeld, Pari, and Agrawal]{shenfeld2026razor}
+Shenfeld, I., Pari, J., and Agrawal, P.
+\newblock {RL}'s razor: Why online reinforcement learning forgets less.
+\newblock In \emph{ICLR}, 2026.
+
+\bibitem[Souly et~al.(2024)Souly, Lu, Bowen, et~al.]{souly2024strongreject}
+Souly, A., Lu, Q., Bowen, D., et~al.
+\newblock A {StrongREJECT} for empty jailbreaks.
+\newblock In \emph{NeurIPS Datasets and Benchmarks}, 2024.
+
+\bibitem[Springer et~al.(2026)Springer, Lee, Metevier,
+  et~al.]{springer2026geometry}
+Springer, M., Lee, C.~P., Metevier, B., et~al.
+\newblock The geometry of alignment collapse: When fine-tuning breaks safety.
+\newblock \emph{arXiv preprint arXiv:2602.15799}, 2026.
+
+\bibitem[Sun et~al.(2026)Sun, Zhang, Wang, et~al.]{sun2026safety}
+Sun, G., Zhang, S., Wang, L., et~al.
+\newblock Safety alignment as continual learning: Mitigating the alignment tax
+  via orthogonal gradient projection.
+\newblock \emph{arXiv preprint arXiv:2602.07892}, 2026.
+
+\bibitem[Talmor et~al.(2019)Talmor, Herzig, Lourie, and
+  Berant]{talmor2019commonsenseqa}
+Talmor, A., Herzig, J., Lourie, N., and Berant, J.
+\newblock {CommonsenseQA}: A question answering challenge targeting commonsense
+  knowledge.
+\newblock In \emph{NAACL}, 2019.
+
+\bibitem[Taori et~al.(2023)Taori, Gulrajani, Zhang, et~al.]{taori2023alpaca}
+Taori, R., Gulrajani, I., Zhang, T., et~al.
+\newblock Stanford {Alpaca}: An instruction-following {LLaMA} model.
+\newblock \url{https://github.com/tatsu-lab/stanford_alpaca}, 2023.
+
+\bibitem[{Team OLMo}(2024)]{olmo2024olmo2}
+{Team OLMo}.
+\newblock 2 {OLMo} 2 furious.
+\newblock \emph{arXiv preprint arXiv:2501.00656}, 2024.
+
+\bibitem[Tong et~al.(2018)Tong, Feng, and Li]{tong2018np}
+Tong, X., Feng, Y., and Li, J.~J.
+\newblock {Neyman-Pearson} classification algorithms and {NP} receiver
+  operating characteristics.
+\newblock \emph{Science Advances}, 4\penalty0 (2), 2018.
+
+\bibitem[Ullah et~al.(2021)Ullah, Mai, Rao, et~al.]{ullah2021unlearning}
+Ullah, E., Mai, T., Rao, A., et~al.
+\newblock Machine unlearning via algorithmic stability.
+\newblock In \emph{COLT}, 2021.
+
+\bibitem[Ung et~al.(2024)Ung, Sun, Bell, et~al.]{ung2024chained}
+Ung, M., Sun, A., Bell, S.~J., et~al.
+\newblock Chained tuning leads to biased forgetting.
+\newblock \emph{arXiv preprint arXiv:2412.16469}, 2024.
+
+\bibitem[Ville(1939)]{ville1939}
+Ville, J.
+\newblock \emph{{\'E}tude critique de la notion de collectif}.
+\newblock Gauthier-Villars, 1939.
+
+\bibitem[Vovk(2012)]{vovk2012conditional}
+Vovk, V.
+\newblock Conditional validity of inductive conformal predictors.
+\newblock In \emph{ACML}, 2012.
+
+\bibitem[Wang et~al.(2026)Wang, Zhu, Wang, et~al.]{wang2026emergent}
+Wang, S., Zhu, X., Wang, H., et~al.
+\newblock Emergent misalignment can be induced by sycophancy and reversed via
+  alignment gating.
+\newblock \emph{arXiv preprint arXiv:2606.09068}, 2026.
+
+\bibitem[Wang et~al.(2023)Wang, Chen, Ge, et~al.]{wang2023olora}
+Wang, X., Chen, T., Ge, Q., et~al.
+\newblock Orthogonal subspace learning for language model continual learning.
+\newblock In \emph{Findings of EMNLP 2023}, 2023.
+
+\bibitem[Wang et~al.(2024)Wang, Li, Han, et~al.]{wang2024donotanswer}
+Wang, Y., Li, H., Han, X., et~al.
+\newblock Do-not-answer: Evaluating safeguards in {LLMs}.
+\newblock In \emph{Findings of EACL}, 2024.
+
+\bibitem[Wo{\l}czyk et~al.(2024)Wo{\l}czyk, Cupia{\l}, Ostaszewski,
+  et~al.]{wolczyk2024finetuning}
+Wo{\l}czyk, M., Cupia{\l}, B., Ostaszewski, M., et~al.
+\newblock Fine-tuning reinforcement learning models is secretly a forgetting
+  mitigation problem.
+\newblock In \emph{ICML}, 2024.
+
+\bibitem[Wortsman et~al.(2022)Wortsman, Ilharco, Kim,
+  et~al.]{wortsman2022robust}
+Wortsman, M., Ilharco, G., Kim, J.~W., et~al.
+\newblock Robust fine-tuning of zero-shot models.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Xie et~al.(2025{\natexlab{a}})Xie, Huang, Zhang, et~al.]{xie2024kk}
+Xie, C., Huang, Y., Zhang, C., et~al.
+\newblock On memorization of large language models in logical reasoning.
+\newblock In \emph{Proceedings of IJCNLP-AACL}, 2025{\natexlab{a}}.
+
+\bibitem[Xie et~al.(2025{\natexlab{b}})Xie, Gao, Ren, et~al.]{xie2025logicrl}
+Xie, T., Gao, Z., Ren, Q., et~al.
+\newblock {Logic-RL}: Unleashing {LLM} reasoning with rule-based reinforcement
+  learning.
+\newblock \emph{arXiv preprint arXiv:2502.14768}, 2025{\natexlab{b}}.
+
+\bibitem[Yang et~al.(2026)Yang, Zhang, Liu, et~al.]{yang2025asft}
+Yang, S., Zhang, Q., Liu, Y., et~al.
+\newblock {AsFT}: Anchoring safety during {LLM} fine-tuning within narrow
+  safety basin.
+\newblock In \emph{AAAI}, 2026.
+
+\bibitem[Yu et~al.(2025)]{yu2025dapo}
+Yu, Q. et~al.
+\newblock {DAPO}: An open-source {LLM} reinforcement learning system at scale.
+\newblock In \emph{NeurIPS}, 2025.
+
+\bibitem[Zeng et~al.(2025)Zeng, He, Guo, et~al.]{zeng2025context}
+Zeng, S., He, P., Guo, K., et~al.
+\newblock Towards context-robust {LLMs}: A gated representation fine-tuning
+  approach.
+\newblock In \emph{ACL}, 2025.
+
+\bibitem[Zhan et~al.(2024)Zhan, Fang, Bindu, et~al.]{zhan2024removing}
+Zhan, Q., Fang, R., Bindu, R., et~al.
+\newblock Removing {RLHF} protections in {GPT-4} via fine-tuning.
+\newblock In \emph{NAACL (Short Papers)}, 2024.
+
+\bibitem[Zhang et~al.(2025)Zhang, Yang, Ren, et~al.]{zhang2025guardrail}
+Zhang, B., Yang, Y., Ren, Z., et~al.
+\newblock A guardrail for safety preservation: When safety-sensitive subspace
+  meets harmful-resistant null-space.
+\newblock \emph{arXiv preprint arXiv:2510.14301}, 2025.
+
+\bibitem[Zhao et~al.(2024)Zhao, Ren, Hessel, et~al.]{zhao2024wildchat}
+Zhao, W., Ren, X., Hessel, J., et~al.
+\newblock {WildChat}: 1{M} {ChatGPT} interaction logs in the wild.
+\newblock In \emph{ICLR}, 2024.
+
+\bibitem[Zhou et~al.(2023)Zhou, Lu, Mishra, et~al.]{zhou2023ifeval}
+Zhou, J., Lu, T., Mishra, S., et~al.
+\newblock Instruction-following evaluation for large language models.
+\newblock \emph{arXiv preprint arXiv:2311.07911}, 2023.
+
+\bibitem[Zhou et~al.(2025)Zhou, Peng, Li, et~al.]{zhou2025efficient}
+Zhou, Z., Peng, A., Li, Q., et~al.
+\newblock Efficient online reinforcement learning fine-tuning need not retain
+  offline data.
+\newblock In \emph{ICLR}, 2025.
+
+\bibitem[Zou et~al.(2023)Zou, Wang, Carlini, et~al.]{zou2023gcg}
+Zou, A., Wang, Z., Carlini, N., et~al.
+\newblock Universal and transferable adversarial attacks on aligned language
+  models.
+\newblock \emph{arXiv preprint arXiv:2307.15043}, 2023.
+
+\end{thebibliography}

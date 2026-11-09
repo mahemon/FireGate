@@ -1,0 +1,67 @@
+# PLAN_SFT.md: supervised fine-tuning without LoRA on NQ, Qwen2.5-1.5B. Classic SFT on the dataset's labels: the
+# response is the first gold short answer (grpo.sft_source=gold, tasks.GOLD), one per training prompt, 150 steps of
+# 64 sequences (4 epochs over 2400 prompts). Full-rank updates of every projection of blocks 8-27 (lora.dense), at a
+# tenth of the LoRA learning rate. Everything else (data, splits, pools, tripwire) as configs/v2/overlap_q15.yaml,
+# so the base-model evaluation is shared and the LoRA runs of v2_overlap_q15 are the comparison.
+# Run folders: runs/sft_nq_q15/s<seed>/{seq, tripwire_prompt, seq_full}; seq_full = gate_layer 1 (every block but the
+# first: 96% of the non-embedding weights), compared behind the deployed gate on the CPU (scripts/switch_report.py).
+exp: sft_nq_q15
+seed_dirs: true
+model_path: models/Qwen2.5-1.5B-Instruct
+data_dir: data
+out_dir: runs
+dtype: bfloat16
+seed: 0
+stream: [nq]
+
+gate_layer: 8
+lora:
+  r: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+  dense: true          # full-rank update of every target projection of blocks >= gate_layer (no LoRA; r, alpha unused)
+
+gen:
+  max_new_tokens: 512
+  max_prompt_tokens: 1024
+  eval_batch_size: 128
+  rollout_batch_size: 128
+  feature_batch_size: 32
+
+grpo:
+  steps: 150
+  prompts_per_step: 16
+  group_size: 8
+  lr: 5.0e-6
+  warmup_steps: 10
+  grad_clip: 1.0
+  micro_batch: 8
+  temperature: 1.0
+  ckpt_every: 25
+  kl_beta: 0.01
+  replay_frac: 0.25
+  weight_decay: 0.0
+  refkl_beta: 1.0
+  refkl_batch: 32
+  refkl_max_prompts: 1024
+  olora_lambda: 0.5
+  objective: sft
+  sft_source: gold
+
+tripwire:
+  eps: 0.03
+  delta: 0.05
+  positions_per_traj: 48
+  l2: 1.0e-4
+  lbfgs_iters: 200
+  fit_ref: {dolly: 600, advbench: 100, general: 900}
+  cal_ref: {dolly: 700, advbench: 170, general: 700}
+
+# no stream-task pools other than nq; the reference / held-out pools are the same as the main experiment
+pools: {nq: 500, mmlu: 500, advbench: 250, xstest: 450, dolly: 400}
+
+splits:
+  rl: [0, 2400]
+  fit_new: [2400, 3000]
+  fit_old: [3000, 3300]
+  cal_old: [3300, 3600]

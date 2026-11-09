@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{The frozen recipe on TriviaQA with Llama-3.2-3B, a task no earlier experiment used (three seeds). Every
+setting was copied from NQ and every prediction written before the data were downloaded. Measured values in \%,
+P5 in points; P1--P5 use the deployed gate, P6 and P7 the chosen (two-sided) gate.}
+\label{tab:trivia}
+\begin{tabular}{l l l l}
+\toprule
+& Prediction & Measured & Result \\
+\midrule
+P1 & no change where the gate is silent & 0 of 9{,}405 & pass \\
+P2 & change $\le$ firing, behind the gate & 24 of 24 checks & pass \\
+P3 & held-out firing consistent with 3\% & Dolly 3.5, AdvBench 0.0; 10k 2.0 & pass \\
+P4 & ungated changes $>80\%$ of Dolly & 95.8, 98.5, 93.2 & pass \\
+P5 & kept within 1 point of $\beta\bar G$ & +23.1 vs +22.3 & pass \\
+P6 & external sets: $\le$3/5\%; refusal $\pm$3 & 0.0, 0.0, 0.0; +0.0, +0.0, +0.0 & pass \\
+P7 & others' prompt sets: $\le$3--10\% & at most 0.8 & pass \\
+\bottomrule
+\end{tabular}
+\end{table}
