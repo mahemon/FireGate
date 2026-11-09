@@ -1,9 +1,10 @@
-# data, models and outputs
-data/
-models/
-runs/
-logs/
-hf_cache/
+# data, models and outputs (no trailing slash, so links are ignored too)
+/data
+/models
+/runs
+/logs
+/hf_cache
+/selftest_real.json
 *.tar.gz
 
 # site settings (copy slurm/cluster.env.example)
