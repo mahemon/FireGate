@@ -1,7 +1,9 @@
 # FireGate: Bounding Behaviour Change Before Training in Continual RL Fine-Tuning
 
-Code, configurations and result tables for the paper *FireGate: Bounding Behaviour Change Before Training in
-Continual RL Fine-Tuning* (Md Anwar Hossen and Ali Jannesari, Iowa State University).
+**Paper:** [arXiv:2611.11979](https://arxiv.org/abs/2611.11979)
+
+Code, configurations and result tables for the paper [*FireGate: Bounding Behaviour Change Before Training in
+Continual RL Fine-Tuning*](https://arxiv.org/abs/2611.11979) (Md Anwar Hossen and Ali Jannesari, Iowa State University).
 
 ## Overview
 
@@ -39,8 +41,8 @@ prompt-time gate afterwards (a certified switch).
 ## Quick check
 
 ```bash
-python tests/test_pure.py          
-bash slurm/submit.sh selftest     
+python tests/test_pure.py
+bash slurm/submit.sh selftest
 ```
 
 ## Running an experiment
@@ -74,8 +76,11 @@ experiments as numbered steps, see `bash slurm/plan.sh steps`.
 
 ```bibtex
 @misc{hossen2026firegate,
-  title  = {FireGate: Bounding Behaviour Change Before Training in Continual RL Fine-Tuning},
-  author = {Hossen, Md Anwar and Jannesari, Ali},
-  year   = {2026}
+  title         = {FireGate: Bounding Behaviour Change Before Training in Continual RL Fine-Tuning},
+  author        = {Hossen, Md Anwar and Jannesari, Ali},
+  year          = {2026},
+  eprint        = {2611.11979},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2611.11979}
 }
 ```
