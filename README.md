@@ -2,9 +2,6 @@
 
 **Paper:** [arXiv:2611.11979](https://arxiv.org/abs/2611.11979)
 
-Code, configurations and result tables for the paper [*FireGate: Bounding Behaviour Change Before Training in
-Continual RL Fine-Tuning*](https://arxiv.org/abs/2611.11979) (Md Anwar Hossen and Ali Jannesari, Iowa State University).
-
 ## Overview
 
 Fine-tuning a deployed language model on one task after another can change behaviour that should stay fixed, such
@@ -21,8 +18,6 @@ prompt-time gate afterwards (a certified switch).
 ## Requirements
 
 - Python 3.11, PyTorch 2.6 with CUDA 12.4, and the packages in `requirements.txt` (tested with transformers 4.51 and 5.x)
-- One GPU with 80 GB or more per run (the paper's runs used H200 and A100 GPUs)
-- A Slurm cluster for the job scripts; single runs also work without Slurm
 
 ## Setup
 
@@ -55,18 +50,6 @@ CONFIG=configs/v2/overlap_q15.yaml SEED=0 METHODS="seq tripwire_prompt" bash slu
 
 Runs are saved in `runs/<experiment>/s<seed>/<method>` and resume from their last checkpoint. To run the paper's
 experiments as numbered steps, see `bash slurm/plan.sh steps`.
-
-## Experiments in the paper
-
-| Paper | Configs |
-|---|---|
-| Three-task stream (GSM8K, Countdown, K&K) | `configs/v2/stream_q15.yaml`, `stream_q7.yaml` |
-| Five-task stream | `configs/v2/stream5_q15.yaml` |
-| Overlap ladder (NQ, IF, Concise, Concise-ctx) | `configs/v2/overlap_*.yaml`, `ladder_*.yaml` |
-| SQuAD 2.0 | `configs/v3/squad2_q15.yaml` |
-| Other model families (Llama, DeepSeek, Mistral) | `configs/fam/` |
-| Full-rank updates and SFT | `configs/sft/` |
-| New task with the recipe frozen (TriviaQA) | `configs/p3/trivia_llama3b.yaml` |
 
 ## Results
 
